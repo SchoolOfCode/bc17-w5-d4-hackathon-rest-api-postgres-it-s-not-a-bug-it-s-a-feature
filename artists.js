@@ -11,18 +11,18 @@ export async function getArtists() {
   return result.rows; 
 }
 
-export async function getResourceOneById(id) {
+export async function getArtistById(id) {
   // Query the database and return the resource with a matching id or null
 }
 
-export async function createResourceOne(resource) {
+export async function createArtist(resource) {
   // Query the database to create an resource and return the newly created resource
 }
 
-export async function updateResourceOneById(id, updates) {
+export async function updateArtistById(id, updates) {
   // Query the database to update the resource and return the newly updated resource or null
 }
 
-export async function deleteResourceOneById(id) {
+export async function deleteArtistById(id) {
   // Query the database to delete the resource and return the deleted resource or null
 }

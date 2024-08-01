@@ -6,18 +6,18 @@ export async function getAlbums() {
   // Query the database and return all resource twos
 }
 
-export async function getResourceTwoById(id) {
+export async function getAlbumById(id) {
   // Query the database and return the resource with a matching id or null
 }
 
-export async function createResourceTwo(resource) {
+export async function createAlbum(resource) {
   // Query the database to create an resource and return the newly created resource
 }
 
-export async function updateResourceTwoById(id, updates) {
+export async function updateAlbumById(id, updates) {
   // Query the database to update the resource and return the newly updated resource or null
 }
 
-export async function deleteResourceTwoById(id) {
+export async function deleteAlbumById(id) {
   // Query the database to delete the resource and return the deleted resource or null
 }

@@ -6,20 +6,20 @@ import express from "express";
 //Import your helper functions for your first resource here
 import {
   getArtists,
-  getResourceOneById,
-  createResourceOne,
-  updateResourceOneById,
-  deleteResourceOneById,
+  getArtistById,
+  createArtist,
+  updateArtistById,
+  deleteArtistById,
 } from "./artists.js";
 
 
 //Import your helper functions for your second resource here
 import {
   getAlbums,
-  getResourceTwoById,
-  createResourceTwo,
-  updateResourceTwoById,
-  deleteResourceTwoById,
+  getAlbumById,
+  createAlbum,
+  updateAlbumById,
+  deleteAlbumById,
 } from "./albums.js";
 
 
@@ -43,19 +43,19 @@ app.get("/artists/", async function (req, res) {
 });
 
 // Endpoint to retrieve a <resource_one> by id
-app.get("/resourceone/:id", async function (req, res) {
+app.get("/Artists/:id", async function (req, res) {
 });
 
 // Endpoint to create a new <resource_one>
-app.post("/resourceone/", async function (req, res) {
+app.post("/Artists/", async function (req, res) {
 });
 
 // Endpoint to update a specific <resource_one> by id
-app.patch("/resourceone/:id", async function (req, res) {
+app.patch("/Artists/:id", async function (req, res) {
 });
 
 // Endpoint to delete a specific <resource_one> by id
-app.delete("/resourceone/:id", async function (req, res) {
+app.delete("/Artists/:id", async function (req, res) {
 });
 
 
@@ -70,19 +70,19 @@ app.get("/albums/", async function (req, res) {
   });
   
   // Endpoint to retrieve a <resource_twos> by id
-  app.get("/resourcetwo/:id", async function (req, res) {
+  app.get("/Albums/:id", async function (req, res) {
   });
   
   // Endpoint to create a new <resource_twos>
-  app.post("/resourcetwo/", async function (req, res) {
+  app.post("/Albums/", async function (req, res) {
   });
   
   // Endpoint to update a specific <resource_twos> by id
-  app.patch("/resourcetwo/:id", async function (req, res) {
+  app.patch("/Albums/:id", async function (req, res) {
   });
   
   // Endpoint to delete a specific <resource_twos> by id
-  app.delete("/resourcetwo/:id", async function (req, res) {
+  app.delete("/Albums/:id", async function (req, res) {
   });
 
 
