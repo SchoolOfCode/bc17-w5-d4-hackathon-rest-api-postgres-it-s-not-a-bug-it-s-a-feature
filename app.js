@@ -3,24 +3,24 @@ import express from "express";
 
 
 
-// Import your helper functions for your first resource here
-// import {
-//   getResourceOne,
-//   getResourceOneById,
-//   createResourceOne,
-//   updateResourceOneById,
-//   deleteResourceOneById,
-// } from "./resource_one.js";
+//Import your helper functions for your first resource here
+import {
+  getArtists,
+  getResourceOneById,
+  createResourceOne,
+  updateResourceOneById,
+  deleteResourceOneById,
+} from "./artists.js";
 
 
-// Import your helper functions for your second resource here
-// import {
-//   getResourceTwo,
-//   getResourceTwoById,
-//   createResourceTwo,
-//   updateResourceTwoById,
-//   deleteResourceTwoById,
-// } from "./resource_two.js";
+//Import your helper functions for your second resource here
+import {
+  getAlbums,
+  getResourceTwoById,
+  createResourceTwo,
+  updateResourceTwoById,
+  deleteResourceTwoById,
+} from "./albums.js";
 
 
 
@@ -37,9 +37,9 @@ app.use(express.json()); // express.json() middleware is used to parse incoming 
 // Resource One Route Handlers
 
 // Endpoint to retrieve all <resource_one>
-app.get("/resourceone/", async function (req, res) {
-    console.log("I'm alive");
-    res.status(200).send("I'm alive!");
+app.get("/artists/", async function (req, res) {
+  const artists = await getArtists();
+  res.status(200).json({ status: "success", data: artists });
 });
 
 // Endpoint to retrieve a <resource_one> by id
@@ -64,9 +64,9 @@ app.delete("/resourceone/:id", async function (req, res) {
 // Resource Two Route Handlers
 
 // Endpoint to retrieve all <resource_twos>
-app.get("/resourcetwo/", async function (req, res) {
-    const authors = await getAuthors();
-    res.status(200).json({ status: "success", data: authors });
+app.get("/albums/", async function (req, res) {
+    const albums = await getAlbums();
+    res.status(200).json({ status: "success", data: albums });
   });
   
   // Endpoint to retrieve a <resource_twos> by id
