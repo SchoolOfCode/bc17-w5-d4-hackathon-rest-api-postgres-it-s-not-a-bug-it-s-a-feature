@@ -49,8 +49,9 @@ async function resetDatabase() {
         await pool.query(`
         CREATE TABLE genres (
             id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-            name VARCHAR(255) NOT NULL
-  );
+            name VARCHAR(255) NOT NULL,
+            description TEXT;
+     );
   `);
 
         // Seed the artists table
@@ -93,12 +94,12 @@ async function resetDatabase() {
   `);
         // Seed the genres table
         await pool.query(`
-      INSERT INTO genres (name)
+      INSERT INTO genres (name, description)
       VALUES 
-          ('Pop'),
-          ('Hip-Hop'),
-          ('Rock'),
-          ('Jazz');
+          ('Pop', 'A genre known for its mainstream appeal and catchy melodies.' ),
+          ('Hip-Hop', 'A genre known for its rhythmic music and rhyming speech.' ),
+          ('Rock', 'A genre characterized by a strong rhythm and often revolves around the electric guitar.'),
+          ('Jazz', 'A genre known for its complex harmonies and improvisational style.');
   `);
         console.log("Database reset successful");
     } catch (error) {
