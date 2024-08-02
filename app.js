@@ -57,6 +57,23 @@ app.get("/Artists/:id", async function (req, res) {
 
 // Endpoint to create a new <resource_one>
 app.post("/Artists/", async function (req, res) {
+  const artist = req.body;
+ 
+  if (!artist || !artist.name || !artist.age || !artist.genre_id) {
+      return res
+      .status(404)
+      .json({ status: "fail", data: { msg: "Incorrect input" } });
+  }
+
+  try {
+    await createArtist(artist);
+
+    res.status(200).json({ status: "success", data: artist });
+    } catch {
+    return res
+    .status(500)
+    .json({status: "fail", data: { msg: "Error accessing database" } })
+  } 
 });
 
 // Endpoint to update a specific <resource_one> by id
@@ -80,10 +97,21 @@ app.get("/albums/", async function (req, res) {
   
   // Endpoint to retrieve a <resource_twos> by id
   app.get("/Albums/:id", async function (req, res) {
-  });
+    const id = req.params.id;
+    const album = await getAlbumById(id);
+    // Assume 404 status if the author is not found
+    if (!album) {
+      return res
+        .status(404)
+        .json({ status: "fail", data: { msg: "Album not found" } });
+    }
+    res.status(200).json({ status: "success", data: album });
+});
+
   
   // Endpoint to create a new <resource_twos>
   app.post("/Albums/", async function (req, res) {
+
   });
   
   // Endpoint to update a specific <resource_twos> by id

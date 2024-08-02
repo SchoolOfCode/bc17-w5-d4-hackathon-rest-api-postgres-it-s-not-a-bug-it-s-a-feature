@@ -4,10 +4,18 @@ import { pool } from "./db/index.js";
 
 export async function getAlbums() {
   // Query the database and return all resource twos
+  const SQLQUERY = 'SELECT * from albums';
+
+  const result = await pool.query(SQLQUERY);
+
+  return result.rows; 
 }
 
 export async function getAlbumById(id) {
   // Query the database and return the resource with a matching id or null
+  const SQLQUERY = 'SELECT * from albums WHERE id = $1';
+  const result = await pool.query(SQLQUERY, [id]);
+  return result.rows[0] || null;
 }
 
 export async function createAlbum(resource) {

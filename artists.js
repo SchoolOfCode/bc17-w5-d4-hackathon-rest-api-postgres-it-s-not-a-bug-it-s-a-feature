@@ -18,16 +18,16 @@ export async function getArtistById(id) {
   return result.rows[0] || null;
 }
 
-export async function createArtist(resource) {
+export async function createArtist(artist) {
   // Query the database to create an resource and return the newly created resource
-   // Query the database to create an author and return the newly created author
+  // Query the database to create an author and return the newly created author
   // $1 and $2 are placeholders for the first_name and last_name values.
   // the values are passed as an array in the second argument of the pool.query function
   const SQLQUERY = 
     `INSERT INTO artists (name, age, genre_id)
     VALUES ($1, $2, $3)
     RETURNING *;`
-  const result = await pool.query(SQLQUERY, [artists.name, artists.age, artists.genre_id]);
+  const result = await pool.query(SQLQUERY, [artist.name, artist.age, artist.genre_id]);
   //array is 0 because we are only returning one row that we just inserted. 
   //we'd have to change code to enter multiple authors and return multiple rows.
   return result.rows[0];
@@ -35,6 +35,15 @@ export async function createArtist(resource) {
 
 export async function updateArtistById(id, updates) {
   // Query the database to update the resource and return the newly updated resource or null
+
+  // const SQLQUERY =
+  //   `UPDATE artists SET name = $2, age = $3, genre_id = $4
+  //   WHERE ID = $1
+  //   RETURNING *;`
+
+  //   const result = await pool.query(SQLQUERY, [id, updates.name, updates.age, updates.genre_id]);
+
+  //   return result.rows[0] || null;
 }
 
 export async function deleteArtistById(id) {
