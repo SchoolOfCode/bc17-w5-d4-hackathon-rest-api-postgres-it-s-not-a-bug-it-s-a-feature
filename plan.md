@@ -11,3 +11,6 @@ Create a URD in mermaid showing the relationship links between the tables
 Edited the reset-database.js file to show these additional tables
 Drop any tables created from the previous workshop where because we are using the same external database link.
 
+Work through making api endpoint handlers and corresponding function.
+
+Test in postman as each completed.
