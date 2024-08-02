@@ -89,13 +89,13 @@ app.delete("/Artists/:id", async function (req, res) {
 
 // Resource Two Route Handlers
 
-// Endpoint to retrieve all <resource_twos>
+// Endpoint to retrieve all <album>
 app.get("/albums/", async function (req, res) {
     const albums = await getAlbums();
     res.status(200).json({ status: "success", data: albums });
   });
   
-  // Endpoint to retrieve a <resource_twos> by id
+  // Endpoint to retrieve a <album> by id
   app.get("/Albums/:id", async function (req, res) {
     const id = req.params.id;
     const album = await getAlbumById(id);
@@ -109,16 +109,33 @@ app.get("/albums/", async function (req, res) {
 });
 
   
-  // Endpoint to create a new <resource_twos>
+  // Endpoint to create a new <album>
   app.post("/Albums/", async function (req, res) {
-
+    const album = req.body;
+ 
+    if (!album || !album.title|| !album.published_date  || !album.artist_id) {
+        return res
+        .status(404)
+        .json({ status: "fail", data: { msg: "Incorrect input" } });
+    }
+  
+    try {
+      await createAlbum(album);
+  
+      res.status(200).json({ status: "success", data: album });
+      } catch {
+      return res
+      .status(500)
+      .json({status: "fail", data: { msg: "Error accessing database" } })
+    } 
+  });
   });
   
-  // Endpoint to update a specific <resource_twos> by id
+  // Endpoint to update a specific <album> by id
   app.patch("/Albums/:id", async function (req, res) {
   });
   
-  // Endpoint to delete a specific <resource_twos> by id
+  // Endpoint to delete a specific <album> by id
   app.delete("/Albums/:id", async function (req, res) {
   });
 
