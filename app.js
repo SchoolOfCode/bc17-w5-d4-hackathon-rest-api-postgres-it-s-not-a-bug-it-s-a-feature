@@ -34,19 +34,19 @@ app.use(express.json()); // express.json() middleware is used to parse incoming 
 
 
 
-// Resource One Route Handlers
+// Artist Route Handlers
 
-// Endpoint to retrieve all <resource_one>
+// Endpoint to retrieve all <artists>
 app.get("/artists/", async function (req, res) {
   const artists = await getArtists();
   res.status(200).json({ status: "success", data: artists });
 });
 
-// Endpoint to retrieve a <resource_one> by id
+// Endpoint to retrieve an <artist> by id
 app.get("/Artists/:id", async function (req, res) {
   const id = req.params.id;
   const artist = await getArtistById(id);
-  // Assume 404 status if the author is not found
+  // Assume 404 status if the artist is not found
   if (!artist) {
     return res
       .status(404)
@@ -55,16 +55,16 @@ app.get("/Artists/:id", async function (req, res) {
   res.status(200).json({ status: "success", data: artist });
 });
 
-// Endpoint to create a new <resource_one>
+// Endpoint to create a new <artist>
 app.post("/Artists/", async function (req, res) {
   const artist = req.body;
- 
+ // Check if the request body is empty or missing any required fields
   if (!artist || !artist.name || !artist.age || !artist.genre_id) {
       return res
       .status(404)
       .json({ status: "fail", data: { msg: "Incorrect input" } });
   }
-
+// If the request body is valid, create a new <artist> and return it
   try {
     await createArtist(artist);
 
@@ -76,30 +76,30 @@ app.post("/Artists/", async function (req, res) {
   } 
 });
 
-// Endpoint to update a specific <resource_one> by id
+// Endpoint to update a specific <artist> by id
 app.patch("/Artists/:id", async function (req, res) {
 });
 
-// Endpoint to delete a specific <resource_one> by id
+// Endpoint to delete a specific <artist> by id
 app.delete("/Artists/:id", async function (req, res) {
 });
 
 
 
 
-// Resource Two Route Handlers
+// Album Route Handlers
 
-// Endpoint to retrieve all <album>
+// Endpoint to retrieve all <albums>
 app.get("/albums/", async function (req, res) {
     const albums = await getAlbums();
     res.status(200).json({ status: "success", data: albums });
   });
   
-  // Endpoint to retrieve a <album> by id
+  // Endpoint to retrieve an <album> by id
   app.get("/Albums/:id", async function (req, res) {
     const id = req.params.id;
     const album = await getAlbumById(id);
-    // Assume 404 status if the author is not found
+    // Assume 404 status if the album is not found
     if (!album) {
       return res
         .status(404)
