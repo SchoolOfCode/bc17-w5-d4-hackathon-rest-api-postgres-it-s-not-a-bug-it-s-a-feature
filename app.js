@@ -129,7 +129,7 @@ app.get("/albums/", async function (req, res) {
       .json({status: "fail", data: { msg: "Error accessing database" } })
     } 
   });
-  });
+
   
   // Endpoint to update a specific <album> by id
   app.patch("/Albums/:id", async function (req, res) {
