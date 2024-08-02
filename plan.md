@@ -9,4 +9,5 @@ Discuss and plan a schema.
 We have decided to use four tables. Albums, Artistes , Songs and Genres
 Create a URD in mermaid showing the relationship links between the tables
 Edited the reset-database.js file to show these additional tables
-Drop any tables created from the previous workshop where the same database
+Drop any tables created from the previous workshop where because we are using the same external database link.
+
